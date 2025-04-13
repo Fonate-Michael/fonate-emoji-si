@@ -17,7 +17,7 @@ body {
     border-radius: 12px;
     background: #1f1f1f;
     color: #fff;
-    font-size: 15px;
+    font-size: clamp(14px, 2vw, 15px);
     resize: none;
     outline: none;
     line-height: 1.4;
@@ -39,7 +39,7 @@ body {
   }
 
   .emoji-suggestions {
-    display: none; /* Hidden by default */
+    display: none;
     position: absolute;
     bottom: 65px;
     left: 0;
@@ -56,9 +56,13 @@ body {
     gap: 8px;
     justify-content: center;
     align-items: center;
-    height: 50px;
+    height: auto;
+    min-height: 50px;
+    max-height: 150px;
     opacity: 0;
     transition: opacity 0.2s ease;
+    overflow-y: auto;
+    flex-wrap: wrap;
   }
 
   .emoji-suggestions.visible {
@@ -68,7 +72,7 @@ body {
 
   .emoji-suggestion-item {
     padding: 8px 12px;
-    font-size: 24px;
+    font-size: clamp(20px, 3vw, 24px);
     cursor: pointer;
     transition: all 0.2s ease;
     border-radius: 8px;
@@ -76,9 +80,45 @@ body {
     align-items: center;
     justify-content: center;
     min-width: 40px;
+    flex: 0 0 auto;
   }
 
   .emoji-suggestion-item:hover {
     background: rgba(70, 70, 70, 0.4);
     transform: scale(1.1);
+  }
+
+  @media (max-width: 768px) {
+    .chat-input {
+      max-width: 100%;
+      padding: 10px 14px;
+    }
+
+    .emoji-suggestions {
+      bottom: 55px;
+      padding: 6px;
+      gap: 6px;
+    }
+
+    .emoji-suggestion-item {
+      padding: 6px 10px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .chat-input {
+      font-size: 14px;
+      padding: 8px 12px;
+    }
+
+    .emoji-suggestions {
+      bottom: 50px;
+      padding: 4px;
+      gap: 4px;
+    }
+
+    .emoji-suggestion-item {
+      padding: 4px 8px;
+      font-size: 20px;
+    }
   }

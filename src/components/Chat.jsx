@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
-import emojiMap from "../data/emojiMap"; // Make sure emojiMap is a JS object export
-import "../components/ChatInputWithEmoji.css"; // CSS moved to external file
+import emojiMap from "../data/emojiMap"; 
+import "../components/ChatInputWithEmoji.css"; 
 
 const ChatInputWithEmoji = () => {
   const [value, setValue] = useState("");
